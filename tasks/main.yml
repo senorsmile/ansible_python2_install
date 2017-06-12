@@ -1,0 +1,13 @@
+---
+- name: Apt install python 2
+  become: True
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+  register: raw_install_python2
+  changed_when: ( "Setting up python" in raw_install_python2.stdout )
+
+- name: Install python-zipstream
+  apt:
+    name: python-zipstream
+    state: present
+
+- setup:
