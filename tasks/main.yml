@@ -6,6 +6,7 @@
   changed_when: ( "Setting up python" in raw_install_python2.stdout )
 
 - name: Install python-zipstream
+  become: True
   apt:
     name: python-zipstream
     state: present
